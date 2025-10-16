@@ -1,25 +1,36 @@
-#This prints the welcome message
-print('Welcome, to Delton, your simple calculator! \n')
+print('Welcome to Delton, you simple calculator! \n')
 
-#This variable keeps track of whether to continue
-repeat='yes'
+#Main loop to keep the calculator running
+while True:
+    x = float(input('Enter first number: '))
+    y = float(input('Enter second number: '))   
 
-#This loops the code as long as the repeat value is 'yes'
-while repeat== 'yes':
-    x=float(input('What is the first number? '))
-    y=float(input('What is the second number? '))
-    z=input('What operation will you like to perform, +, -, *, /? ')
-#This block performs the calculation based on the operator
-    if z=='+':
-        print(x+y)
-    if z=='-':
-        print(x-y)
-    if z=='*':
-        print(x*y)
-    if z=='/':
-        print(x/y)
+#Loop to select an operation 
+    while True:
+        z = input('What operation would you like to perform? (+,-,*,/)? ')
 
-#This asks the user if they want to perform another calculation
-    repeat=input('Would you like to perform another calculation? (yes/no) ').lower()
-#This prints the thank you message if the user inputs anthing other than 'yes'
-print('Thank you for using Delton, goodbye!')
+        if z == '+':
+            print(f'Result: {x+y}')
+            break
+        elif z == '-':
+            print(f'Result: {x-y}')
+            break
+        elif z == '*':
+            print(f'Result: {x*y}')
+            break
+        elif z == '/':
+            #This is to handle division by the vlaue 0
+            if y == 0:
+                print('Error: Division by zero is not allowed.\n')
+                continue
+            print(f'Result: {x/y}')
+            break
+        else:
+            print('Invalid operation. Please enter one of +, -, *, or /.')
+
+    #This asks the user if they want to perform another calculation
+    again = input('Would you like to perform another calculation? (yes/no): ').strip().lower()
+    if again != 'yes':
+        print('Thank you for using Delton!')
+        print('Goodbye!')
+        break 
